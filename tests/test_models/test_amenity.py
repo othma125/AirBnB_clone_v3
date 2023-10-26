@@ -61,20 +61,20 @@ class TestAmenity(unittest.TestCase):
     """Test the Amenity class"""
     def test_is_subclass(self):
         """Test that Amenity is a subclass of BaseModel"""
-        amenity = Amenity()
-        self.assertIsInstance(amenity, BaseModel)
-        self.assertTrue(hasattr(amenity, "id"))
-        self.assertTrue(hasattr(amenity, "created_at"))
-        self.assertTrue(hasattr(amenity, "updated_at"))
+        _amenity = Amenity()
+        self.assertIsInstance(_amenity, BaseModel)
+        self.assertTrue(hasattr(_amenity, "id"))
+        self.assertTrue(hasattr(_amenity, "created_at"))
+        self.assertTrue(hasattr(_amenity, "updated_at"))
 
     def test_name_attr(self):
         """Test that Amenity has attribute name, and it's as an empty string"""
-        amenity = Amenity()
-        self.assertTrue(hasattr(amenity, "name"))
+        _amenity = Amenity()
+        self.assertTrue(hasattr(_amenity, "name"))
         if models.storage_t == 'db':
-            self.assertEqual(amenity.name, None)
+            self.assertEqual(_amenity.name, None)
         else:
-            self.assertEqual(amenity.name, "")
+            self.assertEqual(_amenity.name, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
@@ -84,7 +84,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(type(new_d), dict)
         self.assertFalse("_sa_instance_state" in new_d)
         for attr in am.__dict__:
-            if attr is not "_sa_instance_state":
+            if attr != "_sa_instance_state":
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
