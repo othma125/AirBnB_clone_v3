@@ -13,7 +13,7 @@ from models.state import State
 
 @app_views.route('/states/<state_id>/cities',
                  methods=['GET'], strict_slashes=False)
-def get_cities(state_id):
+def get_cities_in_state(state_id):
     """get all cities"""
     state = storage.get(State, state_id)
     if not state:
