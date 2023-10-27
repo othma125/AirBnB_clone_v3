@@ -17,6 +17,7 @@ from models.user import User
 import json
 import os
 import unittest
+
 DBStorage = db_storage.DBStorage
 classes = {"Amenity": Amenity, "City": City, "Place": Place,
            "Review": Review, "State": State, "User": User}
@@ -24,6 +25,7 @@ classes = {"Amenity": Amenity, "City": City, "Place": Place,
 
 class TestDBStorageDocs(unittest.TestCase):
     """Tests to check the documentation and style of DBStorage class"""
+
     @classmethod
     def setUpClass(cls):
         """Set up for the doc tests"""
@@ -54,6 +56,7 @@ class TestDBStorageDocs(unittest.TestCase):
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
+
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_all_returns_dict(self):
         """Test that all returns a dictionaty"""
@@ -72,7 +75,6 @@ class TestFileStorage(unittest.TestCase):
         user = User(email="test@example.com", password="test_pwd")
         user.save()
         self.assertIsNotNone(models.storage.get(User, user.id))
-
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
