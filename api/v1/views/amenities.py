@@ -5,7 +5,8 @@ all default RESTFul API actions
 """
 from flask import jsonify, request, abort
 from api.v1.views import app_views
-from models import storage, Amenity
+from models import storage
+from models.amenity import Amenity
 
 
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
