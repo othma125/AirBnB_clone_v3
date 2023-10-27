@@ -60,7 +60,8 @@ def update_state(state_id):
     if not data:
         abort(400, 'Not a JSON')
     for key, value in data.items():
-        if key not in ['id', 'created_at', 'updated_at']:
-            setattr(state, key, value)
+        if key in ['id', 'created_at', 'updated_at']:
+            continue
+        setattr(state, key, value)
     state.save()
     return make_response(jsonify(state.to_dict()), 200)
