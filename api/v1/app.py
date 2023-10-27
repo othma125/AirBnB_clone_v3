@@ -11,10 +11,12 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
+
 @app.teardown_appcontext
 def teardown(self):
     """teardown"""
     storage.close()
+
 
 @app.errorhandler(404)
 def not_found(error):
