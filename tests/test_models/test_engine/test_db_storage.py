@@ -93,9 +93,11 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get(self):
         """Test that get returns the correct object"""
-        pass
+        user = User(email="test@example.com", password="test_pwd")
+        user.save()
+        self.assertEqual(models.storage.get(User, user.id), user)
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         """Test that count returns the number of objects in storage"""
-        pass
+        self.assertEqual(len(models.storage.all()), models.storage.count())
