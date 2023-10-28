@@ -73,26 +73,3 @@ def link_amenity_to_place(place_id, amenity_id):
         place.amenity_ids.append(amenity_id)
     storage.save()
     return make_response(jsonify(amenity.to_dict()), 201)
-
-
-@app_views.route('/places/<place_id>/amenities/<amenity_id>',
-                 methods=['POST'],
-                 strict_slashes=False)
-def create_amenity_in_place(place_id, amenity_id):
-    """Creates a Amenity in a Place"""
-    place = storage.get(Place, place_id)
-    if place is None:
-        abort(404)
-    amenity = storage.get(Amenity, amenity_id)
-    if amenity is None:
-        abort(404)
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
-        if amenity in place.amenities:
-            return make_response(jsonify(amenity.to_dict()), 200)
-        place.amenities.append(amenity)
-    else:
-        if amenity_id in place.amenity_ids:
-            return make_response(jsonify(amenity.to_dict()), 200)
-        place.amenity_ids.append(amenity_id)
-    storage.save()
-    return make_response(jsonify(amenity.to_dict()), 201)
