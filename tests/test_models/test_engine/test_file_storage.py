@@ -149,8 +149,8 @@ class TestBmFsInstances(unittest.TestCase):
         my_model_json = self.bm_obj.to_json()
         actual = True
         try:
-            serialized = json.dumps(my_model_json)
-        except:
+            json.dumps(my_model_json)
+        except Exception:
             actual = False
         self.assertTrue(actual)
 
