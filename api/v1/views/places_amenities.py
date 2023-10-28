@@ -5,9 +5,10 @@ all default RESTFul API actions
 """
 from flask import jsonify, request, abort, make_response
 from api.v1.views import app_views
-from models import storage, storage_t
+from models import storage
 from models.place import Place
 from models.amenity import Amenity
+from os import getenv
 
 
 @app_views.route('/places/<place_id>/amenities',
@@ -18,7 +19,7 @@ def get_amenities_by_place(place_id):
     if place is None:
         abort(404)
     amenities = []
-    if storage_t == 'db':
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         for amenity in place.amenities:
             amenities.append(amenity.to_dict())
     else:
@@ -39,7 +40,7 @@ def delete_amenity_from_place(place_id, amenity_id):
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         abort(404)
-    if storage_t == 'db':
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         if amenity not in place.amenities:
             abort(404)
         place.amenities.remove(amenity)
@@ -62,7 +63,7 @@ def link_amenity_to_place(place_id, amenity_id):
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         abort(404)
-    if storage_t == 'db':
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         if amenity in place.amenities:
             return make_response(jsonify(amenity.to_dict()), 200)
         place.amenities.append(amenity)
