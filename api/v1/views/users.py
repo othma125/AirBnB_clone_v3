@@ -58,7 +58,7 @@ def update_user(user_id):
     if user is None:
         abort(404)
     data = request.get_json()
-    if not data:
+    if data is None:
         abort(400, 'Not a JSON')
     for key, value in data.items():
         if key in ['id', 'email', 'created_at', 'updated_at']:
