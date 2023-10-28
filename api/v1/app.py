@@ -6,7 +6,6 @@ from api.v1.views import app_views
 from flask import Flask, jsonify, make_response
 from models import storage
 from flask_cors import CORS
-from flasgger import Swagger
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
