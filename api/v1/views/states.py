@@ -59,8 +59,9 @@ def update_state(state_id):
     data = request.get_json()
     if not data:
         abort(400, 'Not a JSON')
+    keys = 'id', 'created_at', 'updated_at'
     for key, value in data.items():
-        if key in ('id', 'created_at', 'updated_at'):
+        if key in keys:
             continue
         setattr(state, key, value)
     state.save()

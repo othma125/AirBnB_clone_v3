@@ -60,8 +60,9 @@ def update_user(user_id):
     data = request.get_json()
     if data is None:
         abort(400, 'Not a JSON')
+    keys = 'id', 'email', 'created_at', 'updated_at'
     for key, value in data.items():
-        if key in ('id', 'email', 'created_at', 'updated_at'):
+        if key in keys:
             continue
         setattr(user, key, value)
     storage.save()
