@@ -74,7 +74,7 @@ class FileStorage:
         if cls is None or _id is None:
             return None
         if cls in classes:
-            key = cls.__name__ + '.' + _id
+            key = cls + '.' + _id
             return self.all(cls).get(key)
         else:
             return None
