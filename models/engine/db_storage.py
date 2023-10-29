@@ -77,7 +77,7 @@ class DBStorage:
         """A method to retrieve one object"""
         if cls is None or _id is None:
             return None
-        if cls in classes.values():
+        if cls in classes:
             return self.__session.query(cls).filter(cls.id == _id).first()
         else:
             return None
