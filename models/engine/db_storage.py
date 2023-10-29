@@ -91,7 +91,7 @@ class DBStorage:
             return len(self.all())
         count = 0
         for clss in classes:
-            if cls is classes[clss] or cls == clss:
+            if cls is classes[clss]:
                 count += len(self.__session.query(cls).all())
             elif cls == clss:
                 count += len(self.__session.query(classes[clss]).all())
