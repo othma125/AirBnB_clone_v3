@@ -3,7 +3,7 @@
 Create a new view for user objects that handles
 all default RESTFul API actions
 """
-from flask import jsonify, request, abort, make_response
+from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
 from models.user import User
@@ -33,7 +33,7 @@ def delete_user(user_id):
         abort(404)
     user.delete()
     storage.save()
-    return make_response(jsonify({}), 200)
+    return  jsonify({}), 200
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
@@ -48,7 +48,7 @@ def create_user():
         abort(400, 'Missing password')
     user = User(**data)
     user.save()
-    return make_response(jsonify(user.to_dict()), 201)
+    return jsonify(user.to_dict()), 201
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
@@ -66,4 +66,4 @@ def update_user(user_id):
             continue
         setattr(user, key, value)
     storage.save()
-    return make_response(jsonify(user.to_dict()), 200)
+    return jsonify(user.to_dict()), 200
