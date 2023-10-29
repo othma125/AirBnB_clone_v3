@@ -78,7 +78,8 @@ class DBStorage:
         if cls is None or _id is None:
             return None
         if cls in classes:
-            return self.__session.query(classes[cls]).filter(cls.id == _id).first()
+            return self.__session.query(classes[cls])\
+                .filter(cls.id == _id).first()
         elif cls in classes.values():
             return self.__session.query(cls).filter(cls.id == _id).first()
         else:
