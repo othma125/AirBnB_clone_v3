@@ -20,7 +20,7 @@ def get_users():
 @app_views.route('/users/<user_id>',
                  methods=['GET'], strict_slashes=False)
 def get_user(user_id):
-    """Retrieves a User object"""
+    """Retrieves a User object by id"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
