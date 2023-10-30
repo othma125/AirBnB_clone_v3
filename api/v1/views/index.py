@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-App views for AirBnB_clone_v3
+App views for AirBnB_clone_v3 API
 """
 from flask import jsonify
 from models import storage
