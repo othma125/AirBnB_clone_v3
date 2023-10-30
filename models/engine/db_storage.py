@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Contains the class DBStorage that handles all database storage
+Contains the class DBStorage that handles all
+database storage for HBNB
 """
 
 from models.base_model import Base
