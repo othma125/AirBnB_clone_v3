@@ -3,7 +3,7 @@
 Create a new view for place amenities objects that handles
 all default RESTFul API actions
 """
-from flask import jsonify, request, abort, make_response
+from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
 from models.place import Place
@@ -50,7 +50,7 @@ def delete_amenity_from_place(place_id, amenity_id):
         place.amenity_ids.pop(i)
     amenity.delete()
     storage.save()
-    return make_response(jsonify({}), 200)
+    return jsonify({}), 200
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
@@ -72,4 +72,4 @@ def link_amenity_to_place(place_id, amenity_id):
             return make_response(jsonify(amenity.to_dict()), 200)
         place.amenity_ids.append(amenity_id)
     storage.save()
-    return make_response(jsonify(amenity.to_dict()), 201)
+    return jsonify(amenity.to_dict()), 201

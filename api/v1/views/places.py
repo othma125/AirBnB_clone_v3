@@ -20,7 +20,7 @@ def get_places_by_city(city_id):
     city = storage.get(City, city_id)
     if not city:
         abort(404)
-    return jsonify(list(place.to_dict() for place in city.places))
+    return jsonify([place.to_dict() for place in city.places])
 
 
 @app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
@@ -41,7 +41,7 @@ def delete_place(place_id):
         abort(404)
     place.delete()
     storage.save()
-    return make_response(jsonify({}), 200)
+    return jsonify({}), 200
 
 
 @app_views.route('/cities/<city_id>/places',

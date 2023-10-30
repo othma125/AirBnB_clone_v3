@@ -5,7 +5,7 @@ all default RESTFul API actions
 """
 
 from api.v1.views import app_views
-from flask import jsonify, abort, request, make_response
+from flask import jsonify, abort, request
 from models import storage
 from models.city import City
 from models.state import State
@@ -18,15 +18,15 @@ def get_cities_in_state(state_id):
     state = storage.get(State, state_id)
     if not state:
         abort(404)
-    return jsonify(list(city.to_dict()
-                        for city in state.cities))
+    return jsonify([city.to_dict()
+                    for city in state.cities])
 
 
 @app_views.route('/cities', methods=['GET'], strict_slashes=False)
 def get_cities():
     """get all states"""
-    return jsonify(list(city.to_dict()
-                        for city in storage.all(City).values()))
+    return jsonify([city.to_dict()
+                    for city in storage.all(City).values()])
 
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
@@ -46,7 +46,7 @@ def delete_city(city_id):
         abort(404)
     storage.delete(city)
     storage.save()
-    return make_response(jsonify({}), 200)
+    return jsonify({}), 200
 
 
 @app_views.route('/states/<state_id>/cities',
@@ -64,7 +64,7 @@ def create_city(state_id):
     data['state_id'] = state_id
     city = City(**data)
     city.save()
-    return make_response(jsonify(city.to_dict()), 201)
+    return jsonify(city.to_dict()), 201
 
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
@@ -81,4 +81,4 @@ def update_city(city_id):
             continue
         setattr(city, key, value)
     city.save()
-    return make_response(jsonify(city.to_dict()), 200)
+    return jsonify(city.to_dict()), 200

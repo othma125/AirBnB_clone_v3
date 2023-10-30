@@ -3,7 +3,7 @@
 Create a new view for place reviews objects that handles
 all default RESTFul API actions
 """
-from flask import jsonify, request, abort, make_response
+from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
 from models.place import Place
@@ -40,7 +40,7 @@ def delete_review(review_id):
         abort(404)
     storage.delete(review)
     storage.save()
-    return make_response(jsonify({}), 200)
+    return jsonify({}), 200
 
 
 @app_views.route('/places/<place_id>/reviews',
@@ -63,7 +63,7 @@ def create_review(place_id):
     data['place_id'] = place_id
     review = Review(**data)
     review.save()
-    return make_response(jsonify(review.to_dict()), 201)
+    return jsonify(review.to_dict()), 201
 
 
 @app_views.route('/reviews/<review_id>', methods=['PUT'], strict_slashes=False)
@@ -81,4 +81,4 @@ def update_review(review_id):
             continue
         setattr(review, key, value)
     storage.save()
-    return make_response(jsonify(review.to_dict()), 200)
+    return jsonify(review.to_dict()), 200
