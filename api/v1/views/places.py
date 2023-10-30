@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Create a new view for place objects that handles
+develop a new view for place objects that handles
 all default RESTFul API actions
 """
 
