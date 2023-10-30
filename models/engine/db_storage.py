@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the class DBStorage
+Contains the class DBStorage that handles all database storage
 """
 
 from models.base_model import Base
