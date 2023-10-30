@@ -81,6 +81,7 @@ def update_city(city_id):
         abort(400, 'Not a JSON')
     data = request.get_json()
     keys = 'id', 'state_id', 'created_at', 'updated_at'
+    
     for key, value in data.items():
         if key in keys:
             continue
