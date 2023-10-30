@@ -30,7 +30,8 @@ def get_cities():
                     for city in storage.all(City).values()])
 
 
-@app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/cities/<city_id>',
+                 methods=['GET'], strict_slashes=False)
 def get_city(city_id):
     """get a city"""
     city = storage.get("City", city_id)
