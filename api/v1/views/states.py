@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Create a new view for State objects that handles
-all default RESTFul API actions
+Develop a new view for State objects that manages
+all standard RESTful API operations.
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views
