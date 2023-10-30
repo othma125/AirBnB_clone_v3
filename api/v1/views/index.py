@@ -5,8 +5,8 @@ we will use the blueprint app_views
 to group all these views
 """
 from flask import jsonify
-from models import storage
 from api.v1.views import app_views
+from models import storage
 
 
 @app_views.route('/status')
