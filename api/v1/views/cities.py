@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Create a new view for city objects that handles
+Develop a new view for city objects that handles
 all default RESTFul API actions
 """
 
