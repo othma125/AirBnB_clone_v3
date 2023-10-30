@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Develop a new view for city objects that handles
-all default RESTFul API actions
+all default RESTFul API actions for City objects
 """
 
 from api.v1.views import app_views
