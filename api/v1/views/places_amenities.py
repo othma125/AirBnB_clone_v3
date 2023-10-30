@@ -3,7 +3,7 @@
 Develop a new view for place amenities objects that handles
 all default RESTFul API actions for Place objects
 """
-from flask import jsonify, request, abort
+from flask import jsonify, abort
 from api.v1.views import app_views
 from models import storage
 from models.place import Place
