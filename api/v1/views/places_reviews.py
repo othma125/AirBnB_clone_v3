@@ -4,8 +4,8 @@ Create a new view for place reviews objects that handles
 all default RESTFul API actions for Place objects
 """
 from flask import jsonify, request, abort
-from api.v1.views import app_views
 from models import storage
+from api.v1.views import app_views
 from models.place import Place
 from models.user import User
 from models.review import Review
