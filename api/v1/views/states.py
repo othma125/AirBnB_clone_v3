@@ -12,14 +12,14 @@ from models.state import State
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     """get all states"""
-    return jsonify(list(state.to_dict()
-                        for state in storage.all(State).values()))
+    return jsonify([state.to_dict()
+                    for state in storage.all(State).values()])
 
 
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """get a state"""
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if not state:
         abort(404)
     return jsonify(state.to_dict())
@@ -53,7 +53,7 @@ def create_state():
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
     """update a state"""
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if not state:
         abort(404)
     if not request.is_json:
