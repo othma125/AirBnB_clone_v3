@@ -3,7 +3,7 @@
 Contains the class DBStorage
 """
 from api.v1.views import app_views
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify
 from models import storage
 from flask_cors import CORS
 
@@ -21,7 +21,7 @@ def teardown_session(exception):
 @app.errorhandler(404)
 def not_found(error):
     """handler for 404 errors"""
-    return make_response(jsonify({"error": "Not found"}), 404)
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
