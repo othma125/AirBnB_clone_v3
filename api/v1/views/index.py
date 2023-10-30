@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 App views for AirBnB_clone_v3 API v1
-we will use the blueprint app_views
+we will use the blueprint app_views to group all these views
 """
 from flask import jsonify
 from models import storage
