@@ -65,11 +65,11 @@ def link_amenity_to_place(place_id, amenity_id):
         abort(404)
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         if amenity in place.amenities:
-            return make_response(jsonify(amenity.to_dict()), 200)
+            return jsonify(amenity.to_dict()), 200
         place.amenities.append(amenity)
     else:
         if amenity_id in place.amenity_ids:
-            return make_response(jsonify(amenity.to_dict()), 200)
+            return jsonify(amenity.to_dict()), 200
         place.amenity_ids.append(amenity_id)
     storage.save()
     return jsonify(amenity.to_dict()), 201
