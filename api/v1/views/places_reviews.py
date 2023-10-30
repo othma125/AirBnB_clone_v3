@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Create a new view for place reviews objects that handles
-all default RESTFul API actions
+all default RESTFul API actions for Place objects
 """
 from flask import jsonify, request, abort
 from api.v1.views import app_views
