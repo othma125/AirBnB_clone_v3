@@ -20,7 +20,8 @@ def teardown_session(exception):
 
 @app.errorhandler(404)
 def not_found(error):
-    """handler for 404 errors"""
+    """handler for 404 errors that returns a
+    JSON-formatted 404 status code"""
     return jsonify({"error": "Not found"}), 404
 
 
