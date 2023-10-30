@@ -7,13 +7,6 @@ from flask import Flask, jsonify, make_response
 from models import storage
 from flask_cors import CORS
 
-from api.v1.views.index import *
-from api.v1.views.states import *
-from api.v1.views.cities import *
-from api.v1.views.amenities import *
-from api.v1.views.places import *
-from api.v1.views.users import *
-
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
