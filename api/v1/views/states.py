@@ -19,7 +19,7 @@ def get_states():
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """get a state"""
-    state = storage.get(State, state_id)
+    state = storage.get("State", state_id)
     if not state:
         abort(404)
     return jsonify(state.to_dict())
@@ -40,9 +40,9 @@ def delete_state(state_id):
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
     """create a state"""
-    data = request.get_json()
-    if not data:
+    if not request.is_json:
         abort(400, 'Not a JSON')
+    data = request.get_json()
     if 'name' not in data:
         abort(400, 'Missing name')
     state = State(**data)
@@ -53,12 +53,12 @@ def create_state():
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
     """update a state"""
-    state = storage.get(State, state_id)
+    state = storage.get("State", state_id)
     if not state:
         abort(404)
-    data = request.get_json()
-    if not data:
+    if not request.is_json:
         abort(400, 'Not a JSON')
+    data = request.get_json()
     keys = 'id', 'created_at', 'updated_at'
     for key, value in data.items():
         if key in keys:
