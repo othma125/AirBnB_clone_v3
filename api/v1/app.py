@@ -26,6 +26,7 @@ def not_found(error):
 
 
 if __name__ == '__main__':
+    """main method"""
     from os import getenv
     HBNB_API_HOST = getenv('HBNB_API_HOST')
     HBNB_API_PORT = getenv('HBNB_API_PORT')
