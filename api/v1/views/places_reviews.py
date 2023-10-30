@@ -11,7 +11,6 @@ from models.user import User
 from models.review import Review
 
 
-
 @app_views.route('/places/<place_id>/reviews',
                  methods=['GET'], strict_slashes=False)
 def get_reviews_by_place(place_id):
