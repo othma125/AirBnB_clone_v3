@@ -67,7 +67,8 @@ def create_review(place_id):
     return jsonify(review.to_dict()), 201
 
 
-@app_views.route('/reviews/<review_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/reviews/<review_id>',
+                 methods=['PUT'], strict_slashes=False)
 def update_review(review_id):
     """Updates a Review object"""
     review = storage.get(Review, review_id)
