@@ -20,7 +20,7 @@ def get_states():
 @app_views.route('/states/<state_id>',
                  methods=['GET'], strict_slashes=False)
 def get_state(state_id):
-    """get a state"""
+    """get a state by id"""
     state = storage.get(State, state_id)
     if not state:
         abort(404)
