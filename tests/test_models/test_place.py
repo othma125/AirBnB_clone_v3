@@ -8,11 +8,13 @@ import models
 from models import place
 from models.base_model import BaseModel
 import unittest
+
 Place = place.Place
 
 
 class TestPlaceDocs(unittest.TestCase):
     """Tests to check the documentation and style of Place class"""
+
     @classmethod
     def setUpClass(cls):
         """Set up for the doc tests"""
@@ -43,6 +45,7 @@ class TestPlaceDocs(unittest.TestCase):
 
 class TestPlace(unittest.TestCase):
     """Test the Place class"""
+
     def test_is_subclass(self):
         """Test that Place is a subclass of BaseModel"""
         place = Place()
@@ -147,13 +150,13 @@ class TestPlace(unittest.TestCase):
             self.assertEqual(type(place.longitude), float)
             self.assertEqual(place.longitude, 0.0)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing File Storage")
     def test_amenity_ids_attr(self):
         """Test Place has attr amenity_ids, and it's an empty list"""
-        place = Place()
-        self.assertTrue(hasattr(place, "amenity_ids"))
-        self.assertEqual(type(place.amenity_ids), list)
-        self.assertEqual(len(place.amenity_ids), 0)
+        if models.storage_t != 'db':
+            place = Place()
+            self.assertTrue(hasattr(place, "amenity_ids"))
+            self.assertEqual(type(place.amenity_ids), list)
+            self.assertEqual(len(place.amenity_ids), 0)
 
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
