@@ -21,7 +21,6 @@ def get_cities_in_state(state_id):
     return jsonify([city.to_dict()
                     for city in state.cities])
 
-
 @app_views.route('/cities',
                  methods=['GET'], strict_slashes=False)
 def get_cities():
