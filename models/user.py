@@ -28,5 +28,5 @@ class User(BaseModel, Base):
         if kwargs:
             if "password" in kwargs:
                 encoded = kwargs["password"].encode()
-                kwargs.updates({"password": md5(encoded).hexdigest()})
+                kwargs.update({"password": md5(encoded).hexdigest()})
             super().__init__(*args, **kwargs)

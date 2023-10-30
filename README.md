@@ -139,6 +139,61 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) all MyModel
 ** class doesn't exist **
 (hbnb) create BaseModel
+## API Routes
+
+### /api/users
+
+#### GET
+Returns a list of all users in the system.
+
+##### Parameters
+None
+
+##### Response
+- 200 OK
+    - Content-Type: application/json
+    - Body: 
+        ```
+        [
+            {
+                "id": 1,
+                "name": "John Doe",
+                "email": "johndoe@example.com"
+            },
+            {
+                "id": 2,
+                "name": "Jane Smith",
+                "email": "janesmith@example.com"
+            }
+        ]
+        ```
+
+#### POST
+Creates a new user in the system.
+
+##### Parameters
+- name (string, required): The name of the user.
+- email (string, required): The email address of the user.
+
+##### Response
+- 201 Created
+    - Content-Type: application/json
+    - Body:
+        ```
+        {
+            "id": 3,
+            "name": "Bob Johnson",
+            "email": "bob@example.com"
+        }
+        ```
+- 400 Bad Request
+    - Content-Type: application/json
+    - Body:
+        ```
+        {
+            "error": "Name and email are required."
+        }
+        ```
 7da56403-cc45-4f1c-ad32-bfafeb2bb050
 (hbnb) all BaseModel
 [[BaseModel] (7da56403-cc45-4f1c-ad32-bfafeb2bb050) {'updated_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772167), 'id': '7da56403-cc45-4f1c-ad32-bfafeb2bb050', 'created_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772123)}]
