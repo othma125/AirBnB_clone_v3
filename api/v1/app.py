@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the class DBStorage that 
+Contains the class DBStorage that
 handles all database storage
 """
 from api.v1.views import app_views

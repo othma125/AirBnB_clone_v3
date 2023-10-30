@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Contains the class DBStorage that handles all
-database storage for HBNB
+Contains the class DBStorage
 """
 
 from models.base_model import Base
@@ -71,8 +70,7 @@ class DBStorage:
         self.__session = Session
 
     def close(self):
-        """call remove() method on
-        the private session attribute"""
+        """call remove() method on the private session attribute"""
         self.__session.remove()
 
     def get(self, cls, _id):
@@ -87,6 +85,5 @@ class DBStorage:
         return None
 
     def count(self, cls=None):
-        """A method to count the number 
-        of objects in storage"""
+        """A method to count the number of objects in storage"""
         return len(self.all(cls))
