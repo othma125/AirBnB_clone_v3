@@ -16,7 +16,8 @@ def get_states():
                     for state in storage.all(State).values()])
 
 
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>',
+                 methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """get a state"""
     state = storage.get(State, state_id)
