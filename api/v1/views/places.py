@@ -6,7 +6,7 @@ all default RESTFul API actions
 import json
 from os import getenv
 
-import requests
+from requests import get
 from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
@@ -138,7 +138,7 @@ def places_search():
             place = places[i]
             url = first_url + '{}/amenities'
             req = url.format(place.id)
-            response = requests.get(req)
+            response = get(req)
             am_d = json.loads(response.text)
             amenities = [storage.get("Amenity", o['id']) for o in am_d]
             for amenity in ams:
