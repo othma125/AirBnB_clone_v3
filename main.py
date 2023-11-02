@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-""" Test .get() and .count() methods
+"""Testing file
 """
-from models import storage
-from models.state import State
+import json
+import requests
 
-print("All objects: {}".format(storage.count()))
-print("State objects: {}".format(storage.count(State)))
-
-first_state_id = list(storage.all(State).values())[0].id
-print("First state: {}".format(storage.get(State, first_state_id)))
+if __name__ == "__main__":
+    r = requests.get("http://localhost:5050/api/v1/stats")
+    r_j = r.json()
+    print(r_j.get("amenities", 0))
+    print(r_j.get("cities", 0))
+    print(r_j.get("places", 0))
+    print(r_j.get("reviews", 0))
+    print(r_j.get("states", 0))
+    print(r_j.get("users", 0))
